@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Elite Workforce Solutions | Professional CRM</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:#f4f7fb;
+color:#172033
+}
+
+header{
+background:linear-gradient(135deg,#071b35,#0d3561);
+color:#fff;
+padding:18px 22px;
+position:sticky;
+top:0;
+z-index:20
+}
+
+.header{
+max-width:1500px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px
+}
+
+.logo{
+font-size:24px;
+font-weight:800
+}
+
+.logo span{color:#f5bd45}
+
+.subtitle{
+font-size:12px;
+opacity:.8;
+margin-top:4px
+}
+
+.container{
+max-width:1500px;
+margin:22px auto;
+padding:0 16px
+}
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:12px;
+margin-bottom:18px
+}
+
+.stat{
+background:#fff;
+border-radius:14px;
+padding:17px;
+box-shadow:0 3px 14px rgba(0,0,0,.06);
+border:1px solid #e8edf3
+}
+
+.stat small{
+color:#697586;
+font-size:12px
+}
+
+.stat strong{
+display:block;
+font-size:27px;
+margin-top:7px
+}
+
+.card{
+background:#fff;
+border:1px solid #e5eaf1;
+border-radius:14px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 3px 14px rgba(0,0,0,.05)
+}
+
+.card h2{
+margin:0 0 16px;
+font-size:19px
+}
+
+.pipeline{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:8px
+}
+
+.pipeline div{
+background:#f3f6fa;
+padding:12px 8px;
+border-radius:10px;
+text-align:center;
+font-size:12px;
+font-weight:700
+}
+
+.pipeline b{
+display:block;
+font-size:21px;
+margin-bottom:4px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:13px
+}
+
+.group{
+display:flex;
+flex-direction:column;
+gap:6px
+}
+
+.full{grid-column:1/-1}
+
+label{
+font-size:12px;
+font-weight:700;
+color:#526073
+}
+
+input,select,textarea{
+width:100%;
+border:1px solid #ccd5e0;
+border-radius:8px;
+padding:11px;
+font-size:14px;
+background:#fff;
+outline:none
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#1471d1;
+box-shadow:0 0 0 2px rgba(20,113,209,.08)
+}
+
+textarea{
+min-height:90px;
+resize:vertical
+}
+
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:14px
+}
+
+button{
+border:0;
+border-radius:8px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer
+}
+
+.primary{background:#0967c9;color:white}
+.success{background:#16834b;color:white}
+.warning{background:#dc9700;color:white}
+.danger{background:#d9363e;color:white}
+.dark{background:#243247;color:white}
+.light{background:#e9eef5;color:#172033}
+.whatsapp{background:#20c968;color:white}
+
+.filters{
+display:grid;
+grid-template-columns:2fr repeat(6,1fr);
+gap:9px
+}
+
+.table-wrap{
+overflow:auto
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:1400px
+}
+
+th{
+background:#0a2442;
+color:white;
+padding:11px;
+font-size:11px;
+text-align:left
+}
+
+td{
+border-bottom:1px solid #e7ebf0;
+padding:10px;
+font-size:12px;
+vertical-align:top
+}
+
+tr:hover{background:#f8fbff}
+
+.company{
+font-weight:800;
+color:#075cae
+}
+
+.badge{
+display:inline-block;
+padding:5px 8px;
+border-radius:20px;
+font-size:10px;
+font-weight:800;
+white-space:nowrap
+}
+
+.prospect{background:#e7f0ff;color:#1657a4}
+.contacted{background:#fff3d2;color:#885b00}
+.discussion{background:#efe3ff;color:#67309d}
+.confirmed{background:#ddf6e7;color:#14733e}
+.quotation{background:#dff2f7;color:#086579}
+.deal{background:#d6f6ee;color:#08776c}
+.notinterested{background:#fbe0e0;color:#a32828}
+
+.high{color:#d32631;font-weight:800}
+.medium{color:#b87500;font-weight:800}
+.low{color:#24713d;font-weight:800}
+
+.action{
+display:flex;
+flex-wrap:wrap;
+gap:5px
+}
+
+.action button{
+font-size:10px;
+padding:6px 8px
+}
+
+.overdue{
+background:#fff0f0!important
+}
+
+.today{
+background:#fff9e6!important
+}
+
+.mobile{
+display:none
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:100;
+padding:15px
+}
+
+.modal-box{
+background:#fff;
+width:min(700px,100%);
+max-height:90vh;
+overflow:auto;
+border-radius:16px;
+padding:22px
+}
+
+.modal-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
+}
+
+.activity{
+border-left:3px solid #0b67c8;
+padding:8px 12px;
+margin:9px 0;
+background:#f7faff;
+border-radius:0 8px 8px 0;
+font-size:13px
+}
+
+.hidden{display:none!important}
+
+.notice{
+background:#fff8df;
+border-left:4px solid #e4a600;
+padding:12px;
+font-size:12px;
+line-height:1.5;
+margin-bottom:16px
+}
+
+.footer{
+text-align:center;
+padding:30px;
+font-size:12px;
+color:#718096
+}
+
+@media(max-width:1200px){
+.dashboard{grid-template-columns:repeat(3,1fr)}
+.grid{grid-template-columns:repeat(2,1fr)}
+.filters{grid-template-columns:repeat(3,1fr)}
+.pipeline{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:700px){
+
+header{padding:14px}
+
+.header{
+align-items:flex-start;
+flex-direction:column
+}
+
+.container{
+padding:0 10px;
+margin-top:12px
+}
+
+.dashboard{
+grid-template-columns:repeat(2,1fr);
+gap:9px
+}
+
+.stat{
+padding:13px
+}
+
+.stat strong{font-size:21px}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.filters{
+grid-template-columns:1fr
+}
+
+.pipeline{
+grid-template-columns:repeat(2,1fr)
+}
+
+.table-wrap{
+display:none
+}
+
+.mobile{
+display:block
+}
+
+.lead-card{
+background:#fff;
+border:1px solid #e1e7ef;
+border-radius:12px;
+padding:14px;
+margin-bottom:10px
+}
+
+.lead-card h3{
+margin:0 0 10px;
+font-size:16px;
+color:#075cae
+}
+
+.mobile-row{
+font-size:12px;
+margin:6px 0
+}
+
+.mobile-row b{
+color:#657184
+}
+
+.buttons button{
+flex:1
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header">
+
+<div>
+<div class="logo">Elite Workforce <span>Solutions</span></div>
+<div class="subtitle">Professional UAE Manpower Lead Management CRM</div>
+</div>
+
+<div class="subtitle">
+Private CRM • Lead Pipeline • Follow-up
+</div>
+
+</div>
+</header>
+
+<div class="container">
+
+<div class="notice">
+<strong>CRM Note:</strong>
+Prospect means a company identified from a public source.
+It does not mean that the company currently has a manpower requirement.
+Verify contact information and requirement before treating a record as an active opportunity.
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<div class="stat">
+<small>Total Leads</small>
+<strong id="total">0</strong>
+</div>
+
+<div class="stat">
+<small>Prospects</small>
+<strong id="prospects">0</strong>
+</div>
+
+<div class="stat">
+<small>Contacted</small>
+<strong id="contacted">0</strong>
+</div>
+
+<div class="stat">
+<small>Follow-ups Due</small>
+<strong id="followups">0</strong>
+</div>
+
+<div class="stat">
+<small>Requirements</small>
+<strong id="requirements">0</strong>
+</div>
+
+<div class="stat">
+<small>Deals</small>
+<strong id="deals">0</strong>
+</div>
+
+</div>
+
+<!-- PIPELINE -->
+
+<div class="card">
+
+<h2>Lead Pipeline</h2>
+
+<div class="pipeline">
+
+<div>
+<b id="p1">0</b>
+Prospect
+</div>
+
+<div>
+<b id="p2">0</b>
+Contacted
+</div>
+
+<div>
+<b id="p3">0</b>
+Discussion
+</div>
+
+<div>
+<b id="p4">0</b>
+Requirement
+</div>
+
+<div>
+<b id="p5">0</b>
+Quotation
+</div>
+
+<div>
+<b id="p6">0</b>
+Deal
+</div>
+
+</div>
+
+</div>
+
+<!-- LEAD FORM -->
+
+<div class="card">
+
+<h2 id="formTitle">Add New Lead</h2>
+
+<input type="hidden" id="editId">
+
+<div class="grid">
+
+<div class="group">
+<label>Company Name *</label>
+<input id="company" placeholder="Company name">
+</div>
+
+<div class="group">
+<label>Zone / Location</label>
+<select id="zone">
+<option value="">Select</option>
+<option>JAFZA, Dubai</option>
+<option>Dubai South, Dubai</option>
+<option>DAFZA, Dubai</option>
+<option>Al Quoz, Dubai</option>
+<option>Mussafah, Abu Dhabi</option>
+<option>KEZAD, Abu Dhabi</option>
+<option>Abu Dhabi</option>
+<option>Hamriyah Free Zone, Sharjah</option>
+<option>Sharjah</option>
+<option>SAIF Zone, Sharjah</option>
+<option>RAKEZ, Ras Al Khaimah</option>
+<option>Ras Al Khaimah</option>
+<option>Ajman Free Zone</option>
+<option>Ajman</option>
+<option>Other UAE</option>
+</select>
+</div>
+
+<div class="group">
+<label>Industry</label>
+<input id="industry" placeholder="Manufacturing / Logistics">
+</div>
+
+<div class="group">
+<label>Potential Trade</label>
+<select id="trade">
+<option>Electrician</option>
+<option>Electrical Technician</option>
+<option>Fitter</option>
+<option>Welder</option>
+<option>HVAC Technician</option>
+<option>Mechanical Technician</option>
+<option>Maintenance Technician</option>
+<option>Plumber</option>
+<option>Multi-skilled Technician</option>
+<option>Skilled Manpower</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="group">
+<label>Public Phone</label>
+<input id="phone" placeholder="+971...">
+</div>
+
+<div class="group">
+<label>Email</label>
+<input id="email" placeholder="email@company.com">
+</div>
+
+<div class="group">
+<label>Website</label>
+<input id="website" placeholder="https://...">
+</div>
+
+<div class="group">
+<label>Lead Source</label>
+<select id="source">
+<option>Company Website</option>
+<option>Google</option>
+<option>LinkedIn</option>
+<option>Public Directory</option>
+<option>NAFL Public Member List</option>
+<option>Referral</option>
+<option>Exhibition</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="group">
+<label>Status</label>
+<select id="status">
+<option>Prospect</option>
+<option>Contacted</option>
+<option>Discussion</option>
+<option>Requirement Confirmed</option>
+<option>Quotation</option>
+<option>Deal</option>
+<option>Not Interested</option>
+</select>
+</div>
+
+<div class="group">
+<label>Priority</label>
+<select id="priority">
+<option>High</option>
+<option selected>Medium</option>
+<option>Low</option>
+</select>
+</div>
+
+<div class="group">
+<label>Follow-up Date</label>
+<input id="followup" type="date">
+</div>
+
+<div class="group">
+<label>Last Contacted</label>
+<input id="lastContacted" type="date">
+</div>
+
+<div class="group full">
+<label>Next Action</label>
+<input id="nextAction" placeholder="Call procurement / Send company profile / Follow up">
+</div>
+
+<div class="group full">
+<label>Notes</label>
+<textarea id="notes" placeholder="Contact person, discussion, requirement details..."></textarea>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="primary" onclick="saveLead()">Save Lead</button>
+
+<button class="light" onclick="clearForm()">Clear</button>
+
+</div>
+
+</div>
+
+<!-- FILTER -->
+
+<div class="card">
+
+<h2>Search & Filter</h2>
+
+<div class="filters">
+
+<input id="search"
+placeholder="Search company, phone, trade, notes..."
+oninput="render()">
+
+<select id="fZone" onchange="render()">
+<option value="">All Zones</option>
+</select>
+
+<select id="fIndustry" onchange="render()">
+<option value="">All Industries</option>
+</select>
+
+<select id="fTrade" onchange="render()">
+<option value="">All Trades</option>
+</select>
+
+<select id="fStatus" onchange="render()">
+<option value="">All Status</option>
+<option>Prospect</option>
+<option>Contacted</option>
+<option>Discussion</option>
+<option>Requirement Confirmed</option>
+<option>Quotation</option>
+<option>Deal</option>
+<option>Not Interested</option>
+</select>
+
+<select id="fPriority" onchange="render()">
+<option value="">All Priority</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+
+<select id="fSource" onchange="render()">
+<option value="">All Sources</option>
+</select>
+
+</div>
+
+<div class="buttons">
+
+<button class="light" onclick="resetFilters()">Reset Filters</button>
+
+<button class="success" onclick="exportCSV()">Export CSV</button>
+
+<button class="primary" onclick="document.getElementById('csv').click()">
+Import CSV
+</button>
+
+<input
+id="csv"
+type="file"
+accept=".csv"
+class="hidden"
+onchange="importCSV(event)"
+>
+
+<button class="warning" onclick="templateCSV()">CSV Template</button>
+
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="card">
+
+<h2>Lead Database</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Location</th>
+<th>Industry</th>
+<th>Trade</th>
+<th>Contact</th>
+<th>Source</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Follow-up</th>
+<th>Next Action</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="table"></tbody>
+
+</table>
+
+</div>
+
+<div id="mobile" class="mobile"></div>
+
+</div>
+
+</div>
+
+<!-- DETAIL MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2 id="detailTitle">Lead Details</h2>
+
+<button class="dark" onclick="closeModal()">X</button>
+
+</div>
+
+<div id="detail"></div>
+
+</div>
+
+</div>
+
+<div class="footer">
+Elite Workforce Solutions • Private CRM
+</div>
+
+
+<script>
+
+const KEY="elite_workforce_professional_v5";
+
+let leads=JSON.parse(localStorage.getItem(KEY)||"[]");
+
+
+/* SAMPLE PUBLIC-SOURCE PROSPECTS */
+
+if(leads.length===0){
+
+leads=[
+
+{
+id:1,
+company:"A G S LOGISTICS L.L.C",
+zone:"JAFZA, Dubai",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"971 4 8831233",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Verify procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:2,
+company:"AL FUTTAIM LOGISTICS CO, L.L.C",
+zone:"JAFZA, Dubai",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Find procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:3,
+company:"DP WORLD LOGISTICS UAE FZE",
+zone:"JAFZA, Dubai",
+industry:"Logistics / Ports",
+trade:"Electrician / Fitter / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Identify supplier/procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:4,
+company:"GEODIS FREIGHT FORWARDING L.L.C",
+zone:"JAFZA, Dubai",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Verify procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:5,
+company:"DHL GLOBAL FORWARDING ABUDHABI LLC",
+zone:"Abu Dhabi",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Find procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:6,
+company:"DNATA CARGO",
+zone:"DAFZA, Dubai",
+industry:"Aviation / Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Research supplier registration",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:7,
+company:"ALLIED TRANSPORT L.L.C",
+zone:"Dubai South, Dubai",
+industry:"Transport / Logistics",
+trade:"Electrician / Mechanic / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Find operations contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:8,
+company:"GOOD2 LOAD",
+zone:"RAKEZ, Ras Al Khaimah",
+industry:"Logistics",
+trade:"Electrician / Fitter / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Directory",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Verify contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:9,
+company:"IAL LOGISTICS L.L.C",
+zone:"Abu Dhabi",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Contact procurement",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:10,
+company:"AL MASAOOD FREIGHT FORWARDING SERVICES L.L.C",
+zone:"Abu Dhabi",
+industry:"Logistics",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"NAFL Public Member List",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Find procurement contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:11,
+company:"Bhuwalka Steel Industries FZC",
+zone:"Hamriyah Free Zone, Sharjah",
+industry:"Steel Manufacturing",
+trade:"Electrician / Fitter / Welder",
+phone:"971 6 5260000",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Contact HR/procurement",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:12,
+company:"Stolt Steel & Alloys FZE",
+zone:"Hamriyah Free Zone, Sharjah",
+industry:"Steel / Metals",
+trade:"Electrician / Fitter / Welder",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Find maintenance contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:13,
+company:"Q Steel FZE",
+zone:"Hamriyah Free Zone, Sharjah",
+industry:"Steel Manufacturing",
+trade:"Electrician / Fitter / Welder",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Contact company",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:14,
+company:"Cape Commodities FZC",
+zone:"Hamriyah Free Zone, Sharjah",
+industry:"Industrial / Commodities",
+trade:"Electrician / Fitter / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Find maintenance contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:15,
+company:"Baniyas Aluminum & Steel",
+zone:"Mussafah, Abu Dhabi",
+industry:"Metal Manufacturing",
+trade:"Electrician / Fitter / Welder",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Contact procurement",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:16,
+company:"YSE – Machining & Fabrication",
+zone:"Mussafah, Abu Dhabi",
+industry:"Machining / Fabrication",
+trade:"Electrician / Fitter / Welder",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"High",
+followup:"",
+lastContacted:"",
+nextAction:"Contact operations",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:17,
+company:"Arab Wood",
+zone:"KEZAD, Abu Dhabi",
+industry:"Manufacturing",
+trade:"Electrician / Carpenter / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Find maintenance contact",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+},
+
+{
+id:18,
+company:"Gulf Flavours & Fragrances",
+zone:"JAFZA, Dubai",
+industry:"Manufacturing",
+trade:"Electrician / HVAC / Maintenance",
+phone:"",
+email:"",
+website:"",
+source:"Public Company Source",
+status:"Prospect",
+priority:"Medium",
+followup:"",
+lastContacted:"",
+nextAction:"Contact procurement",
+notes:"Public-source prospect. Requirement not confirmed.",
+activities:[]
+}
+
+];
+
+save();
+}
+
+
+/* SAVE */
+
+function save(){
+localStorage.setItem(KEY,JSON.stringify(leads));
+}
+
+
+/* FORM SAVE */
+
+function saveLead(){
+
+const company=document.getElementById("company").value.trim();
+
+if(!company){
+alert("Company name required.");
+return;
+}
+
+const edit=document.getElementById("editId").value;
+
+const data={
+company,
+zone:val("zone"),
+industry:val("industry"),
+trade:val("trade"),
+phone:val("phone"),
+email:val("email"),
+website:val("website"),
+source:val("source"),
+status:val("status"),
+priority:val("priority"),
+followup:val("followup"),
+lastContacted:val("lastContacted"),
+nextAction:val("nextAction"),
+notes:val("notes")
+};
+
+if(edit){
+
+const i=leads.findIndex(x=>String(x.id)===String(edit));
+
+if(i>=0){
+leads[i]={...leads[i],...data};
+}
+
+}else{
+
+const duplicate=leads.some(x=>
+x.company.toLowerCase()===company.toLowerCase()
+);
+
+if(duplicate){
+
+if(!confirm("A company with this name already exists. Add anyway?")){
+return;
+}
+
+}
+
+leads.unshift({
+id:Date.now(),
+...data,
+activities:[
+{
+date:new Date().toLocaleString(),
+text:"Lead created"
+}
+]
+});
+
+}
+
+save();
+clearForm();
+refresh();
+
+alert(edit?"Lead updated.":"Lead saved.");
+
+}
+
+
+/* EDIT */
+
+function editLead(id){
+
+const l=leads.find(x=>String(x.id)===String(id));
+
+if(!l)return;
+
+document.getElementById("editId").value=l.id;
+
+set("company",l.company);
+set("zone",l.zone);
+set("industry",l.industry);
+set("trade",l.trade);
+set("phone",l.phone);
+set("email",l.email);
+set("website",l.website);
+set("source",l.source);
+set("status",l.status);
+set("priority",l.priority);
+set("followup",l.followup);
+set("lastContacted",l.lastContacted);
+set("nextAction",l.nextAction);
+set("notes",l.notes);
+
+document.getElementById("formTitle").innerText="Edit Lead";
+
+scrollTo({top:0,behavior:"smooth"});
+}
+
+
+/* CLEAR */
+
+function clearForm(){
+
+[
+"editId",
+"company",
+"zone",
+"industry",
+"phone",
+"email",
+"website",
+"followup",
+"lastContacted",
+"nextAction",
+"notes"
+].forEach(id=>set(id,""));
+
+set("trade","Electrician");
+set("source","Company Website");
+set("status","Prospect");
+set("priority","Medium");
+
+document.getElementById("formTitle").innerText="Add New Lead";
+}
+
+
+/* DELETE */
+
+function deleteLead(id){
+
+if(!confirm("Delete this lead?"))return;
+
+leads=leads.filter(x=>String(x.id)!==String(id));
+
+save();
+refresh();
+}
+
+
+/* WHATSAPP */
+
+function whatsapp(phone){
+
+if(!phone){
+alert("Phone number not available.");
+return;
+}
+
+let p=String(phone).replace(/\D/g,"");
+
+if(p.startsWith("0"))p="971"+p.substring(1);
+if(!p.startsWith("971") && p.length<=10)p="971"+p;
+
+window.open("https://wa.me/"+p,"_blank");
+}
+
+
+/* DETAILS */
+
+function details(id){
+
+const l=leads.find(x=>String(x.id)===String(id));
+
+if(!l)return;
+
+document.getElementById("detailTitle").innerText=l.company;
+
+let html=`
+
+<p><b>Location:</b> ${esc(l.zone)}</p>
+<p><b>Industry:</b> ${esc(l.industry)}</p>
+<p><b>Potential Trade:</b> ${esc(l.trade)}</p>
+<p><b>Phone:</b> ${esc(l.phone||"-")}</p>
+<p><b>Email:</b> ${esc(l.email||"-")}</p>
+<p><b>Website:</b> ${esc(l.website||"-")}</p>
+<p><b>Lead Source:</b> ${esc(l.source)}</p>
+<p><b>Status:</b> ${esc(l.status)}</p>
+<p><b>Priority:</b> ${esc(l.priority)}</p>
+<p><b>Follow-up:</b> ${esc(l.followup||"-")}</p>
+<p><b>Last Contacted:</b> ${esc(l.lastContacted||"-")}</p>
+<p><b>Next Action:</b> ${esc(l.nextAction||"-")}</p>
+<p><b>Notes:</b> ${esc(l.notes||"-")}</p>
+
+<hr>
+
+<h3>Activity History</h3>
+`;
+
+if(!l.activities || l.activities.length===0){
+
+html+="<p>No activity recorded.</p>";
+
+}else{
+
+l.activities.slice().reverse().forEach(a=>{
+
+html+=`
+<div class="activity">
+<strong>${esc(a.date)}</strong><br>
+${esc(a.text)}
+</div>
+`;
+
+});
+
+}
+
+html+=`
+
+<div class="buttons">
+
+<button class="primary"
+onclick="addActivity('${l.id}')">
++ Add Activity
+</button>
+
+<button class="whatsapp"
+onclick="whatsapp('${escAttr(l.phone)}')">
+WhatsApp
+</button>
+
+<button class="light"
+onclick="editLead('${l.id}');closeModal()">
+Edit Lead
+</button>
+
+</div>
+`;
+
+document.getElementById("detail").innerHTML=html;
+
+document.getElementById("modal").style.display="flex";
+}
+
+
+/* ACTIVITY */
+
+function addActivity(id){
+
+const l=leads.find(x=>String(x.id)===String(id));
+
+if(!l)return;
+
+const text=prompt("Enter activity:");
+
+if(!text)return;
+
+if(!l.activities)l.activities=[];
+
+l.activities.push({
+date:new Date().toLocaleString(),
+text:text
+});
+
+save();
+
+details(id);
+}
+
+
+/* CLOSE */
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+
+/* RENDER */
+
+function render(){
+
+const search=val("search").toLowerCase();
+
+const zone=val("fZone");
+const industry=val("fIndustry");
+const trade=val("fTrade");
+const status=val("fStatus");
+const priority=val("fPriority");
+const source=val("fSource");
+
+const list=leads.filter(l=>{
+
+const text=[
+l.company,
+l.zone,
+l.industry,
+l.trade,
+l.phone,
+l.email,
+l.notes,
+l.nextAction
+].join(" ").toLowerCase();
+
+return (!search||text.includes(search))
+&&(!zone||l.zone===zone)
+&&(!industry||l.industry===industry)
+&&(!trade||l.trade===trade)
+&&(!status||l.status===status)
+&&(!priority||l.priority===priority)
+&&(!source||l.source===source);
+
+});
+
+const table=document.getElementById("table");
+
+table.innerHTML="";
+
+list.forEach(l=>{
+
+const tr=document.createElement("tr");
+
+const followClass=followClassName(l.followup);
+
+if(followClass)tr.classList.add(followClass);
+
+tr.innerHTML=`
+
+<td>
+<div class="company">${esc(l.company)}</div>
+<div>${esc(l.email||"")}</div>
+</td>
+
+<td>${esc(l.zone)}</td>
+
+<td>${esc(l.industry)}</td>
+
+<td>${esc(l.trade)}</td>
+
+<td>
+${esc(l.phone||"-")}
+</td>
+
+<td>${esc(l.source)}</td>
+
+<td>
+<span class="badge ${statusClass(l.status)}">
+${esc(l.status)}
+</span>
+</td>
+
+<td class="${priorityClass(l.priority)}">
+${esc(l.priority)}
+</td>
+
+<td>${esc(l.followup||"-")}</td>
+
+<td>${esc(l.nextAction||"-")}</td>
+
+<td>
+<div class="action">
+
+<button class="primary"
+onclick="details('${l.id}')">
+View
+</button>
+
+<button class="primary"
+onclick="editLead('${l.id}')">
+Edit
+</button>
+
+<button class="whatsapp"
+onclick="whatsapp('${escAttr(l.phone)}')">
+WA
+</button>
+
+<button class="danger"
+onclick="deleteLead('${l.id}')">
+Delete
+</button>
+
+</div>
+</td>
+`;
+
+table.appendChild(tr);
+
+});
+
+
+/* MOBILE */
+
+const mobile=document.getElementById("mobile");
+
+mobile.innerHTML="";
+
+list.forEach(l=>{
+
+mobile.innerHTML+=`
+
+<div class="lead-card">
+
+<h3>${esc(l.company)}</h3>
+
+<div class="mobile-row">
+<b>Location:</b> ${esc(l.zone)}
+</div>
+
+<div class="mobile-row">
+<b>Industry:</b> ${esc(l.industry)}
+</div>
+
+<div class="mobile-row">
+<b>Trade:</b> ${esc(l.trade)}
+</div>
+
+<div class="mobile-row">
+<b>Phone:</b> ${esc(l.phone||"-")}
+</div>
+
+<div class="mobile-row">
+<b>Status:</b>
+<span class="badge ${statusClass(l.status)}">
+${esc(l.status)}
+</span>
+</div>
+
+<div class="mobile-row">
+<b>Priority:</b>
+${esc(l.priority)}
+</div>
+
+<div class="mobile-row">
+<b>Follow-up:</b>
+${esc(l.followup||"-")}
+</div>
+
+<div class="mobile-row">
+<b>Next Action:</b>
+${esc(l.nextAction||"-")}
+</div>
+
+<div class="action">
+
+<button class="primary"
+onclick="details('${l.id}')">
+View
+</button>
+
+<button class="primary"
+onclick="editLead('${l.id}')">
+Edit
+</button>
+
+<button class="whatsapp"
+onclick="whatsapp('${escAttr(l.phone)}')">
+WhatsApp
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+updateDashboard();
+
+}
+
+
+/* DASHBOARD */
+
+function updateDashboard(){
+
+document.getElementById("total").innerText=leads.length;
+
+document.getElementById("prospects").innerText=
+count("Prospect");
+
+document.getElementById("contacted").innerText=
+count("Contacted");
+
+document.getElementById("requirements").innerText=
+count("Requirement Confirmed");
+
+document.getElementById("deals").innerText=
+count("Deal");
+
+let due=0;
+
+const today=new Date();
+today.setHours(0,0,0,0);
+
+leads.forEach(l=>{
+
+if(!l.followup)return;
+
+const d=new Date(l.followup+"T00:00:00");
+
+if(d<=today &&
+l.status!=="Deal" &&
+l.status!=="Not Interested"){
+due++;
+}
+
+});
+
+document.getElementById("followups").innerText=due;
+
+document.getElementById("p1").innerText=count("Prospect");
+document.getElementById("p2").innerText=count("Contacted");
+document.getElementById("p3").innerText=count("Discussion");
+document.getElementById("p4").innerText=count("Requirement Confirmed");
+document.getElementById("p5").innerText=count("Quotation");
+document.getElementById("p6").innerText=count("Deal");
+
+}
+
+function count(status){
+return leads.filter(x=>x.status===status).length;
+}
+
+
+/* FOLLOW-UP */
+
+function followClassName(date){
+
+if(!date)return"";
+
+const today=new Date();
+today.setHours(0,0,0,0);
+
+const d=new Date(date+"T00:00:00");
+
+if(d<today)return"overdue";
+
+if(d.getTime()===today.getTime())return"today";
+
+return"";
+}
+
+
+/* STATUS */
+
+function statusClass(s){
+
+if(s==="Prospect")return"prospect";
+if(s==="Contacted")return"contacted";
+if(s==="Discussion")return"discussion";
+if(s==="Requirement Confirmed")return"confirmed";
+if(s==="Quotation")return"quotation";
+if(s==="Deal")return"deal";
+
+return"notinterested";
+}
+
+
+/* PRIORITY */
+
+function priorityClass(p){
+
+if(p==="High")return"high";
+if(p==="Low")return"low";
+
+return"medium";
+}
+
+
+/* FILTER OPTIONS */
+
+function updateFilters(){
+
+fill("fZone",
+[...new Set(leads.map(x=>x.zone).filter(Boolean))].sort(),
+"All Zones");
+
+fill("fIndustry",
+[...new Set(leads.map(x=>x.industry).filter(Boolean))].sort(),
+"All Industries");
+
+fill("fTrade",
+[...new Set(leads.map(x=>x.trade).filter(Boolean))].sort(),
+"All Trades");
+
+fill("fSource",
+[...new Set(leads.map(x=>x.source).filter(Boolean))].sort(),
+"All Sources");
+
+}
+
+
+function fill(id,items,first){
+
+const s=document.getElementById(id);
+const old=s.value;
+
+s.innerHTML=`<option value="">${first}</option>`;
+
+items.forEach(x=>{
+const o=document.createElement("option");
+o.value=x;
+o.textContent=x;
+s.appendChild(o);
+});
+
+if(items.includes(old))s.value=old;
+
+}
+
+
+/* RESET */
+
+function resetFilters(){
+
+set("search","");
+set("fZone","");
+set("fIndustry","");
+set("fTrade","");
+set("fStatus","");
+set("fPriority","");
+set("fSource","");
+
+render();
+}
+
+
+/* CSV EXPORT */
+
+function exportCSV(){
+
+const headers=[
+"Company",
+"Zone / Location",
+"Industry",
+"Potential Trade",
+"Public Phone",
+"Email",
+"Website",
+"Lead Source",
+"Status",
+"Priority",
+"Follow-up Date",
+"Last Contacted",
+"Next Action",
+"Notes"
+];
+
+let csv=headers.join(",")+"\n";
+
+leads.forEach(l=>{
+
+const row=[
+l.company,
+l.zone,
+l.industry,
+l.trade,
+l.phone,
+l.email,
+l.website,
+l.source,
+l.status,
+l.priority,
+l.followup,
+l.lastContacted,
+l.nextAction,
+l.notes
+];
+
+csv+=row.map(csvEscape).join(",")+"\n";
+
+});
+
+download(csv,"Elite-Workforce-Solutions-CRM.csv");
+
+}
+
+
+/* TEMPLATE */
+
+function templateCSV(){
+
+const headers=[
+"Company",
+"Zone / Location",
+"Industry",
+"Potential Trade",
+"Public Phone",
+"Email",
+"Website",
+"Lead Source",
+"Status",
+"Priority",
+"Follow-up Date",
+"Last Contacted",
+"Next Action",
+"Notes"
+];
+
+const sample=[
+"Example Company",
+"JAFZA, Dubai",
+"Manufacturing",
+"Electrician",
+"+971500000000",
+"",
+"",
+"Company Website",
+"Prospect",
+"Medium",
+"",
+"",
+"Contact procurement",
+"Public-source prospect; requirement not confirmed."
+];
+
+download(
+headers.map(csvEscape).join(",")+
+"\n"+
+sample.map(csvEscape).join(","),
+"Elite-Workforce-CRM-template.csv"
+);
+
+}
+
+
+/* CSV IMPORT */
+
+function importCSV(event){
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+const rows=parseCSV(e.target.result);
+
+if(rows.length<2){
+alert("Invalid CSV.");
+return;
+}
+
+const headers=rows[0].map(x=>x.trim().toLowerCase());
+
+let added=0;
+let skipped=0;
+
+for(let i=1;i<rows.length;i++){
+
+const row=rows[i];
+
+if(!row.length)continue;
+
+const get=(...names)=>{
+
+for(const name of names){
+
+const index=headers.indexOf(name);
+
+if(index>=0)return row[index]||"";
+
+}
+
+return"";
+
+};
+
+const company=get("company","company name").trim();
+
+if(!company){
+skipped++;
+continue;
+}
+
+const duplicate=leads.some(x=>
+x.company.toLowerCase()===company.toLowerCase()
+);
+
+if(duplicate){
+skipped++;
+continue;
+}
+
+leads.push({
+
+id:Date.now()+i+Math.random(),
+
+company,
+
+zone:get("zone / location","zone","location"),
+
+industry:get("industry"),
+
+trade:get("potential trade","trade"),
+
+phone:get("public phone","phone"),
+
+email:get("email"),
+
+website:get("website"),
+
+source:get("lead source","source")||"CSV Import",
+
+status:get("status")||"Prospect",
+
+priority:get("priority")||"Medium",
+
+followup:get("follow-up date","followup date","followup"),
+
+lastContacted:get("last contacted"),
+
+nextAction:get("next action"),
+
+notes:get("notes"),
+
+activities:[{
+date:new Date().toLocaleString(),
+text:"Imported from CSV"
+}]
+
+});
+
+added++;
+
+}
+
+save();
+refresh();
+
+alert(
+added+" leads imported.\n"+
+skipped+" duplicate/invalid rows skipped."
+);
+
+event.target.value="";
+
+};
+
+reader.readAsText(file);
+
+}
+
+
+/* CSV PARSER */
+
+function parseCSV(text){
+
+const rows=[];
+let row=[];
+let value="";
+let quote=false;
+
+for(let i=0;i<text.length;i++){
+
+const c=text[i];
+const n=text[i+1];
+
+if(c==='"'){
+
+if(quote&&n==='"'){
+value+='"';
+i++;
+}else{
+quote=!quote;
+}
+
+}else if(c===","&&!quote){
+
+row.push(value);
+value="";
+
+}else if((c==="\n"||c==="\r")&&!quote){
+
+if(c==="\r"&&n==="\n")i++;
+
+row.push(value);
+
+if(row.some(x=>x.trim()!=="")){
+rows.push(row);
+}
+
+row=[];
+value="";
+
+}else{
+
+value+=c;
+
+}
+
+}
+
+if(value!==""||row.length){
+
+row.push(value);
+
+if(row.some(x=>x.trim()!=="")){
+rows.push(row);
+}
+
+}
+
+return rows;
+}
+
+
+/* DOWNLOAD */
+
+function download(content,name){
+
+const blob=new Blob(
+["\ufeff"+content],
+{type:"text/csv;charset=utf-8"}
+);
+
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+
+a.href=url;
+a.download=name;
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(url);
+}
+
+
+/* HELPERS */
+
+function val(id){
+return document.getElementById(id).value;
+}
+
+function set(id,value){
+document.getElementById(id).value=value||"";
+}
+
+function esc(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+}
+
+function escAttr(value){
+
+return String(value??"")
+.replace(/\\/g,"\\\\")
+.replace(/'/g,"\\'");
+}
+
+
+/* REFRESH */
+
+function refresh(){
+
+updateFilters();
+render();
+
+}
+
+
+/* START */
+
+refresh();
+
+</script>
+
+</body>
+</html>
